@@ -33,7 +33,7 @@ class TestUserService(BaseTestCase):
             response = self.client.post(
                 '/users',
                 data=json.dumps({
-                    'username': 'salvatore',
+                    'username': 'ingSalvatore8448',
                     'email': 'salvadorybarzola@upeu.edu.pe'
                 }),
                 content_type='application/json',
@@ -77,7 +77,7 @@ class TestUserService(BaseTestCase):
             self.client.post(
                 '/users',
                 data=json.dumps({
-                    'username': 'salvatore',
+                    'username': 'ingSalvatore8448',
                     'email': 'salvadorybarzola@upeu.edu.pe'
                 }),
                 content_type='application/json',
@@ -85,7 +85,7 @@ class TestUserService(BaseTestCase):
             response = self.client.post(
                 '/users',
                 data=json.dumps({
-                    'username': 'salvatore',
+                    'username': 'ingSalvatore8448',
                     'email': 'salvadorybarzola@upeu.edu.pe'
                 }),
                 content_type='application/json',
@@ -98,12 +98,12 @@ class TestUserService(BaseTestCase):
 
     def test_single_user(self):
         """Asegurando que un usuario único se comporte correctamente."""
-        user = add_user('salvatore', 'salvatore.salvadorybarzola@upeu.edu.pe')
+        user = add_user('ingSalvatore8448', 'salvadorybarzola@upeu.edu.pe')
         with self.client:
             response = self.client.get(f'/users/{user.id}')
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 200)
-            self.assertIn('salvatore', data['data']['username'])
+            self.assertIn('ingSalvatore8448', data['data']['username'])
             self.assertIn('salvadorybarzola@upeu.edu.pe', data['data']['email'])
             self.assertIn('success', data['status'])
 
@@ -140,17 +140,17 @@ class TestUserService(BaseTestCase):
 
     def test_all_users(self):
         """Asegurando se obtenga a todos lus usuarios correctamente."""
-        add_user('salvatore', 'salvadorybarzola@upeu.edu.pe')
-        add_user('salvatore', 'salvadorybarzola@upeu.edu.pe')
+        add_user('ingSalvatore8448', 'salvadorybarzola@upeu.edu.pe')
+        add_user('ingSalvatore8448', 'salvadorybarzola@upeu.edu.pe')
         with self.client:
             response = self.client.get('/users')
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 200)
             self.assertEqual(len(data['data']['users']), 2)
-            self.assertIn('salvatore', data['data']['users'][0]['username'])
+            self.assertIn('ingSalvatore8448', data['data']['users'][0]['username'])
             self.assertIn(
                 'salvadorybarzola@upeu.edu.pe', data['data']['users'][0]['email'])
-            self.assertIn('salvatore', data['data']['users'][1]['username'])
+            self.assertIn('ingSalvatore8448', data['data']['users'][1]['username'])
             self.assertIn(
                 'salvadorybarzola@upeu.edu.pe', data['data']['users'][1]['email'])
             self.assertIn('success', data['status'])
